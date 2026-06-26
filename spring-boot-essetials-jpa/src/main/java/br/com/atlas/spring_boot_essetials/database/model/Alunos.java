@@ -5,27 +5,35 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "avaliacoes_fisicas")
+@Table(name = "alunos")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Builder
-public class avaliacaoFisicas {
+public class Alunos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(nullable = false)
-    private BigDecimal peso;
-    @Column(nullable = false)
-    private BigDecimal altura;
+    private String nome;
+    @Column(nullable = false, unique = true)
+    private String email;
 
-    @Column(name = "gordura_corporal", nullable = false)
-    private BigDecimal gorduraCorporal;
+
+    @OneToOne
+    @JoinColumn(name =  "avaliacao_fisica_id")
+    private AvaliacaoFisicas avaliacaoFisicas;
+
+
+    @OneToMany(mappedBy = "alunos")
+    private Set<Treinos> treinos = new HashSet<>();
 
 }

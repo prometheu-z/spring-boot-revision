@@ -1,12 +1,16 @@
-datasource:
-  url: jdbc:mysql://localhost:3306/seu_banco
-  username: root
-  password: sua_senha
-  driver-class-name: com.mysql.cj.jdbc.Driver
+spring:
+  application:
+    name: spring-boot-essetials-jpa
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring-essetials?createDatabaseIfNotExist=true
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASS}
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
     properties:
       hibernate:
+        format_sql: true
         dialect: org.hibernate.dialect.MySQLDialect
+

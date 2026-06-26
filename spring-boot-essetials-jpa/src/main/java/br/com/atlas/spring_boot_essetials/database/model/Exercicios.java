@@ -8,24 +8,24 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
-@Table(name = "avaliacoes_fisicas")
+@Table(name = "exercicios")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Builder
-public class AvaliacaoFisicas {
+public class Exercicios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(nullable = false)
-    private BigDecimal peso;
-    @Column(nullable = false)
-    private BigDecimal altura;
+    private String nome;
+    @Column(name = "grupo_muscular")
+    private String grupoMuscular;
 
-    @Column(name = "gordura_corporal", nullable = false)
-    private BigDecimal gorduraCorporal;
+
+
 
 }
