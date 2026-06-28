@@ -7,6 +7,7 @@ import ch.qos.logback.core.encoder.EchoEncoder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,6 +17,8 @@ public class ExercicioService {
     private final ExerciciosRepository exerciciosRepository;
 
     public List<Exercicios> findAll(){
+
+
         return exerciciosRepository.findAll();
     }
 
@@ -28,6 +31,8 @@ public class ExercicioService {
     }
 
     public List<Exercicios > getExercicioByGrupoMuscular(String grupoMuscular){
+
+
         return exerciciosRepository.findAllByGrupoMuscular(grupoMuscular);
     }
 

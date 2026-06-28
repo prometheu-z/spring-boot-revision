@@ -24,11 +24,11 @@ public class Treinos {
     @Column(nullable = false, length = 40)
     private String nome;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "aluno_id")
-    private Alunos alunos;
+    private Alunos aluno;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "treinos_exercicios",
             joinColumns = @JoinColumn(name = "treino_id"),

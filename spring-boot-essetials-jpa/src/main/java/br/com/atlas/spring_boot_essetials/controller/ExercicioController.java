@@ -22,33 +22,28 @@ public class ExercicioController {
     private final ExercicioService exercicioService;
 
     @GetMapping
-    public ResponseEntity<List<ExercicioDto>> findAll(){
-        List<ExercicioDto> exerciciosdtos = new ArrayList<>();
+    public ResponseEntity<List<Exercicios>> findAll(){
 
-        exercicioService.findAll().forEach(e -> {
-            ExercicioDto ex = new ExercicioDto(e.getNome(), e.getGrupoMuscular());
-            exerciciosdtos.add(ex);
-        });
-        return ResponseEntity.status(HttpStatus.OK).body(exerciciosdtos);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(exercicioService.findAll());
 
     }
     @GetMapping
     @RequestMapping("/grupos/{grupoMuscular}")
-    public ResponseEntity<List<ExercicioDto>> getByGrupoMuscular(@PathVariable String grupoMuscular){
-        List<ExercicioDto> exercicioDtos = new ArrayList<>();
+    public ResponseEntity<List<Exercicios>> getByGrupoMuscular(@PathVariable String grupoMuscular){
 
-        exercicioService.getExercicioByGrupoMuscular(grupoMuscular).forEach(e -> {
-            ExercicioDto dto = new ExercicioDto(e.getNome(), e.getGrupoMuscular());
-            exercicioDtos.add(dto);
-        });
-
-        return ResponseEntity.status(HttpStatus.OK).body(exercicioDtos);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(exercicioService.getExercicioByGrupoMuscular(grupoMuscular));
 
     }
 
     @PostMapping
     public ResponseEntity<Exercicios> createExercicio(@Valid @RequestBody ExercicioDto exercicioDto){
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(exercicioService.save(exercicioDto));
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(exercicioService.save(exercicioDto));
     }
 }

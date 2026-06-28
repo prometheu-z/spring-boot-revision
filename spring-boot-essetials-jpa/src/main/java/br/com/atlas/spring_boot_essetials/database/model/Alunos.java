@@ -28,12 +28,12 @@ public class Alunos {
     private String email;
 
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name =  "avaliacao_fisica_id")
     private AvaliacaoFisicas avaliacaoFisicas;
 
 
-    @OneToMany(mappedBy = "alunos")
+    @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
     private Set<Treinos> treinos = new HashSet<>();
 
 }

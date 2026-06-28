@@ -1,6 +1,5 @@
 package br.com.atlas.spring_boot_essetials.exception;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Getter
@@ -8,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class NotBlankResponse {
+public class ExceptionResponse {
     private String mensagem;
     private Integer codigo;
 }

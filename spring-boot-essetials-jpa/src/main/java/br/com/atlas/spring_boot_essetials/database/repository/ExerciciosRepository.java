@@ -9,10 +9,11 @@ import org.springframework.stereotype.Repository;
 
 import java.rmi.server.UID;
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 //n precisa
-public interface ExerciciosRepository extends JpaRepository<Exercicios, UID> {
+public interface ExerciciosRepository extends JpaRepository<Exercicios, UUID> {
 
     List<Exercicios> findAllByGrupoMuscular(String grupoMuscular);
 
